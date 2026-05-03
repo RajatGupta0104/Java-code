@@ -1,4 +1,5 @@
 public class sizeMaxSumHeight {
+    static int size = 0;
     public static class Node {
         int val;
         Node left;
@@ -9,11 +10,10 @@ public class sizeMaxSumHeight {
         }
     }
 
-    public static void preorder(Node root) {
-        if(root == null) return;
-        System.out.print(root.val + " ");
-        preorder(root.left);
-        preorder(root.right);
+    public static int size(Node root) {
+        if(root == null) return 0;
+        return size(root.left) + size(root.right) + 1;
+        
     }
 
     public static void main(String args[]) {
@@ -30,6 +30,7 @@ public class sizeMaxSumHeight {
         Node f = new Node(7);
         b.left = e;
         b.right = f;
-        preorder(root);
+        // preorder(root);
+        System.out.println(size(root));
     }
 }
