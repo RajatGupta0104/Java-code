@@ -24,6 +24,13 @@ public class PreInPost {
         System.out.println(root.val);
         InOrder(root.right);
     }
+
+    public static void PostOrder(Node root) {
+        if(root == null) return;
+        PostOrder(root.left);
+        PostOrder(root.right);
+        System.out.println(root.val);
+    }
     public static void main(String args[]) {
         Node root = new Node(1);
         Node a = new Node(2);
@@ -40,6 +47,7 @@ public class PreInPost {
         b.right = f;
 
         // preOrder(root);
-        InOrder(root);
+        // InOrder(root);
+        PostOrder(root);
     }
 }
