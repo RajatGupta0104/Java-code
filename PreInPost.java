@@ -31,6 +31,18 @@ public class PreInPost {
         PostOrder(root.right);
         System.out.println(root.val);
     }
+
+    public static void nthLevel(Node root, int n) {
+        if(root == null) return;
+        if(n == 1) System.out.print(root.val + " ");
+        nthLevel(root.left, n-1);
+        nthLevel(root.right, n-1);
+    }
+
+    public static int height(Node root) {
+        if(root == null || (root.left == null && root.right == null)) return 0;
+        return 1 + Math.max(height(root.left), height(root.right));
+    }
     public static void main(String args[]) {
         Node root = new Node(1);
         Node a = new Node(2);
@@ -48,6 +60,11 @@ public class PreInPost {
 
         // preOrder(root);
         // InOrder(root);
-        PostOrder(root);
+        // PostOrder(root);
+        int level = height(root) + 1;
+        for(int i = 1; i <= level; i++) {
+            nthLevel(root,i);
+            System.out.println();
+        }
     }
 }
