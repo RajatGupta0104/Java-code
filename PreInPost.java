@@ -1,4 +1,5 @@
 import org.w3c.dom.Node;
+import java.util.*;
 
 public class PreInPost {
     public static class Node {
@@ -43,6 +44,18 @@ public class PreInPost {
         if(root == null || (root.left == null && root.right == null)) return 0;
         return 1 + Math.max(height(root.left), height(root.right));
     }
+
+    public static void bfs(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        if(root != null) q.add(root);
+        while(q.size() > 0) {
+            Node temp = q.peek();
+            if(temp.left != null) q.add(temp.left);
+            if(temp.right != null) q.add(temp.right);
+            System.out.print(temp.val+" ");
+            q.remove();
+        }
+    }
     public static void main(String args[]) {
         Node root = new Node(1);
         Node a = new Node(2);
@@ -61,10 +74,11 @@ public class PreInPost {
         // preOrder(root);
         // InOrder(root);
         // PostOrder(root);
-        int level = height(root) + 1;
-        for(int i = 1; i <= level; i++) {
-            nthLevel(root,i);
-            System.out.println();
-        }
-    }
+        // int level = height(root) + 1;
+        // for(int i = 1; i <= level; i++) {
+        //     nthLevel(root,i);
+        //     System.out.println();
+        // }
+        bfs(root);
+    } 
 }
